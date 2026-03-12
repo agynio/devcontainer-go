@@ -15,9 +15,9 @@ Go development container image for Agynio services.
 
 | Tool | Version (default) | Notes |
 | --- | --- | --- |
-| Go | 1.22 (golang:1.22-bookworm) | Base image |
+| Go | 1.25 (golang:1.25-bookworm) | Base image |
 | buf | 1.64.0 | Multi-arch binary via `BUF_VERSION` |
-| air | 1.61.7 | Go hot-reload via `AIR_VERSION` |
+| air | 1.64.5 | Go hot-reload via `AIR_VERSION` |
 | oapi-codegen | 2.4.1 | OpenAPI code generation via `OAPI_CODEGEN_VERSION` |
 | git, curl, bash, openssh-client, inotify-tools | Debian packages | Installed via apt |
 
