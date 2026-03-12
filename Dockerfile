@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1.7
 
-FROM golang:1.22-bookworm
+FROM golang:1.25-bookworm
 
 ARG BUF_VERSION=1.64.0
-ARG AIR_VERSION=1.61.7
+ARG AIR_VERSION=1.64.5
 ARG OAPI_CODEGEN_VERSION=2.4.1
 
 RUN apt-get update \
