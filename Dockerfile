@@ -1,0 +1,38 @@
+# syntax=docker/dockerfile:1.7
+
+FROM golang:1.22-bookworm
+
+ARG BUF_VERSION=1.64.0
+ARG AIR_VERSION=1.61.7
+ARG OAPI_CODEGEN_VERSION=2.4.1
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      git \
+      bash \
+      curl \
+      openssh-client \
+      ca-certificates \
+      inotify-tools \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN curl -sSL "https://github.com/bufbuild/buf/releases/download/v${BUF_VERSION}/buf-Linux-$(uname -m)" \
+      -o /usr/local/bin/buf \
+ && chmod +x /usr/local/bin/buf
+
+RUN GOBIN=/usr/local/bin go install github.com/air-verse/air@v${AIR_VERSION}
+
+RUN GOBIN=/usr/local/bin go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@v${OAPI_CODEGEN_VERSION}
+
+WORKDIR /opt/app
+
+RUN useradd -m -u 1000 -s /bin/bash godev \
+ && mkdir -p /go /opt/app \
+ && chown -R godev:godev /go /opt/app
+
+ENV GOPATH=/go
+ENV PATH=/go/bin:$PATH
+
+USER godev
+
+CMD ["sleep", "infinity"]
