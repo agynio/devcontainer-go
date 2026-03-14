@@ -19,6 +19,7 @@ Go development container image for Agynio services.
 | buf | 1.64.0 | Multi-arch binary via `BUF_VERSION` |
 | air | 1.64.5 | Go hot-reload via `AIR_VERSION` |
 | oapi-codegen | 2.4.1 | OpenAPI code generation via `OAPI_CODEGEN_VERSION` |
+| oras | 1.1.0 | OCI registry CLI via `ORAS_VERSION` |
 | git, curl, bash, openssh-client, inotify-tools | Debian packages | Installed via apt |
 
 ## Usage
