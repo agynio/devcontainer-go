@@ -39,6 +39,10 @@ RUN useradd -m -u 1000 -s /bin/bash godev \
 ENV GOPATH=/go
 ENV PATH=/go/bin:$PATH
 
+# bookworm names no locale, and glibc's C fallback cannot decode UTF-8: typed
+# accents and Cyrillic reach the shell's line editor as undecodable bytes.
+ENV LANG=C.UTF-8
+
 USER godev
 
 CMD ["sleep", "infinity"]
